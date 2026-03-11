@@ -15,9 +15,10 @@ const overlays = [
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
-      <header className="border-b border-border/50 py-10">
+      {/* Header */}
+      <header className="border-b border-border/50 py-8">
         <div className="container max-w-5xl mx-auto px-4 text-center">
-          <div className="text-[10px] font-display tracking-[0.4em] text-primary/60 uppercase mb-3">
+          <div className="text-[10px] font-display tracking-[0.4em] text-primary/60 uppercase mb-2">
             Streaming Overlay
           </div>
           <h1 className="text-3xl md:text-4xl font-black text-foreground mb-2">
@@ -29,9 +30,10 @@ const Index = () => {
         </div>
       </header>
 
-      <main className="container max-w-5xl mx-auto px-4 py-14 space-y-20">
+      {/* Overlays grid */}
+      <main className="container max-w-5xl mx-auto px-4 py-12 space-y-16">
         {overlays.map((item, i) => (
-          <section key={i} className="space-y-5">
+          <section key={i} className="space-y-4">
             {item.component}
             <div className="text-center">
               <h2 className="text-sm font-bold text-foreground">{item.label}</h2>
@@ -41,6 +43,7 @@ const Index = () => {
         ))}
       </main>
 
+      {/* Footer */}
       <footer className="border-t border-border/50 py-8 text-center">
         <p className="text-xs text-muted-foreground">
           © 2026 방송 오버레이 제작 · 문의: overlay@example.com
