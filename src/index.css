@@ -96,7 +96,47 @@
   }
 
   .overlay-panel {
-    @apply rounded-lg border border-border bg-card p-4;
-    background: linear-gradient(145deg, hsl(230 25% 12%), hsl(230 25% 8%));
+    @apply rounded-xl border border-border bg-card p-5;
+    background: linear-gradient(145deg, hsl(228 22% 20%), hsl(228 22% 15%));
   }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  @keyframes spin-slow {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  @keyframes count-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.04); }
+  }
+
+  @keyframes slide-up {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-float { animation: float 3s ease-in-out infinite; }
+  .animate-pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
+  .animate-shimmer {
+    background-size: 200% 100%;
+    animation: shimmer 3s linear infinite;
+  }
+  .animate-spin-slow { animation: spin-slow 12s linear infinite; }
+  .animate-count-pulse { animation: count-pulse 2s ease-in-out infinite; }
+  .animate-slide-up { animation: slide-up 0.5s ease-out both; }
 }
