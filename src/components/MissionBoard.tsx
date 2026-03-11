@@ -17,23 +17,26 @@ const missions = [
   { text: "칭찬 릴레이", amount: "3,000원", done: true },
 ];
 
+const completedCount = missions.filter(m => m.done).length;
+
 const MissionBoard = () => {
   return (
     <div className="overlay-panel glow-purple max-w-md mx-auto" style={{
-      background: "linear-gradient(145deg, hsl(280 40% 12%), hsl(230 30% 8%))",
+      background: "linear-gradient(145deg, hsl(280 30% 18%), hsl(228 25% 14%))",
     }}>
       <h3 className="text-lg font-bold text-neon-purple text-glow-magenta tracking-wide mb-4 text-center">
-        🎯 미션판
+        미션판
       </h3>
-      <div className="grid grid-cols-4 gap-1.5">
+      <div className="grid grid-cols-4 gap-2">
         {missions.map((m, i) => (
           <div
             key={i}
-            className={`relative rounded-md p-2 text-center border transition-all ${
+            className={`relative rounded-lg p-2.5 text-center border transition-all duration-300 animate-slide-up hover:scale-105 ${
               m.done
                 ? "bg-neon-green/10 border-neon-green/30"
-                : "bg-muted/20 border-border/50 hover:border-neon-purple/40"
+                : "bg-muted/20 border-border/50 hover:border-neon-purple/50"
             }`}
+            style={{ animationDelay: `${i * 40}ms` }}
           >
             <div className={`text-[11px] font-medium leading-tight ${m.done ? "line-through text-muted-foreground" : "text-foreground"}`}>
               {m.text}
@@ -42,16 +45,29 @@ const MissionBoard = () => {
               {m.amount}
             </div>
             {m.done && (
-              <div className="absolute inset-0 flex items-center justify-center">
-                <span className="text-neon-green text-[10px] font-bold bg-card/80 px-1.5 py-0.5 rounded">완료</span>
+              <div className="absolute inset-0 flex items-center justify-center rounded-lg bg-card/60">
+                <span className="text-neon-green text-[10px] font-bold px-2 py-0.5 rounded bg-card/90 border border-neon-green/30">완료</span>
               </div>
             )}
           </div>
         ))}
       </div>
-      <div className="mt-3 flex justify-between text-[10px] text-muted-foreground">
-        <span>완료: {missions.filter(m => m.done).length}/{missions.length}</span>
-        <span>총 후원금: {missions.filter(m => m.done).reduce((_, m) => _, 0).toLocaleString()}원 달성</span>
+      {/* Progress bar */}
+      <div className="mt-4">
+        <div className="flex justify-between text-[10px] text-muted-foreground mb-1.5">
+          <span>달성률</span>
+          <span>{completedCount}/{missions.length}</span>
+        </div>
+        <div className="w-full h-1.5 rounded-full bg-muted overflow-hidden">
+          <div
+            className="h-full rounded-full animate-shimmer"
+            style={{
+              width: `${(completedCount / missions.length) * 100}%`,
+              background: "linear-gradient(90deg, hsl(150 90% 45%), hsl(190 100% 50%), hsl(150 90% 45%))",
+              backgroundSize: "200% 100%",
+            }}
+          />
+        </div>
       </div>
     </div>
   );

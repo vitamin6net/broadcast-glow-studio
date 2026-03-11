@@ -24,15 +24,16 @@ const SongRequestBoard = () => {
     <div className="overlay-panel glow-cyan max-w-md mx-auto">
       <div className="flex items-center justify-between mb-4">
         <h3 className="text-lg font-bold text-primary text-glow-cyan tracking-wide">
-          🎵 신청곡 목록
+          신청곡 목록
         </h3>
         <span className="text-xs text-muted-foreground">{songs.length}곡 대기중</span>
       </div>
       <div className="space-y-1.5 max-h-[360px] overflow-hidden relative">
-        {songs.map((song) => (
+        {songs.map((song, i) => (
           <div
             key={song.num}
-            className="flex items-center gap-3 px-3 py-2 rounded-md bg-muted/30 hover:bg-muted/50 transition-colors"
+            className="flex items-center gap-3 px-3 py-2 rounded-md bg-muted/30 hover:bg-muted/60 transition-all duration-300 hover:translate-x-1 animate-slide-up"
+            style={{ animationDelay: `${i * 60}ms` }}
           >
             <span className="text-xs font-display text-primary/60 w-5 text-right">
               {String(song.num).padStart(2, "0")}
@@ -50,7 +51,7 @@ const SongRequestBoard = () => {
             </span>
           </div>
         ))}
-        <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-card to-transparent pointer-events-none" />
+        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-card to-transparent pointer-events-none" />
       </div>
     </div>
   );
