@@ -1,9 +1,6 @@
 const TimerOverlay = () => {
   return (
-    <div className="overlay-panel max-w-sm mx-auto text-center" style={{
-      background: "linear-gradient(180deg, hsl(228 22% 18%), hsl(228 22% 13%))",
-      boxShadow: "0 0 40px hsl(190 100% 50% / 0.1)",
-    }}>
+    <div className="overlay-panel max-w-sm mx-auto text-center">
       <div className="text-xs text-muted-foreground tracking-[0.2em] uppercase mb-5">
         방송 시작까지
       </div>
@@ -16,7 +13,7 @@ const TimerOverlay = () => {
           <div key={i} className="flex items-center gap-3">
             <div className="flex flex-col items-center">
               <div
-                className="text-6xl font-display font-black text-primary text-glow-cyan leading-none tracking-wider animate-count-pulse"
+                className="text-6xl font-display font-black text-primary leading-none tracking-wider animate-count-pulse"
                 style={{ animationDelay: `${i * 0.3}s` }}
               >
                 {unit.value}
@@ -34,7 +31,7 @@ const TimerOverlay = () => {
           className="h-full rounded-full animate-shimmer"
           style={{
             width: "35%",
-            background: "linear-gradient(90deg, hsl(190 100% 50%), hsl(280 80% 55%), hsl(190 100% 50%))",
+            background: "linear-gradient(90deg, hsl(190 100% 40%), hsl(280 80% 50%), hsl(190 100% 40%))",
             backgroundSize: "200% 100%",
           }}
         />

@@ -21,10 +21,8 @@ const completedCount = missions.filter(m => m.done).length;
 
 const MissionBoard = () => {
   return (
-    <div className="overlay-panel glow-purple max-w-md mx-auto" style={{
-      background: "linear-gradient(145deg, hsl(280 30% 18%), hsl(228 25% 14%))",
-    }}>
-      <h3 className="text-lg font-bold text-neon-purple text-glow-magenta tracking-wide mb-4 text-center">
+    <div className="overlay-panel glow-purple max-w-md mx-auto">
+      <h3 className="text-lg font-bold text-neon-purple tracking-wide mb-4 text-center">
         미션판
       </h3>
       <div className="grid grid-cols-4 gap-2">
@@ -33,26 +31,25 @@ const MissionBoard = () => {
             key={i}
             className={`relative rounded-lg p-2.5 text-center border transition-all duration-300 animate-slide-up hover:scale-105 ${
               m.done
-                ? "bg-neon-green/10 border-neon-green/30"
-                : "bg-muted/20 border-border/50 hover:border-neon-purple/50"
+                ? "bg-neon-green/8 border-neon-green/25"
+                : "bg-muted/40 border-border hover:border-neon-purple/40"
             }`}
             style={{ animationDelay: `${i * 40}ms` }}
           >
             <div className={`text-[11px] font-medium leading-tight ${m.done ? "line-through text-muted-foreground" : "text-foreground"}`}>
               {m.text}
             </div>
-            <div className={`text-[9px] mt-1 ${m.done ? "text-neon-green/60" : "text-neon-yellow/70"}`}>
+            <div className={`text-[9px] mt-1 ${m.done ? "text-neon-green/60" : "text-neon-yellow"}`}>
               {m.amount}
             </div>
             {m.done && (
-              <div className="absolute inset-0 flex items-center justify-center rounded-lg bg-card/60">
-                <span className="text-neon-green text-[10px] font-bold px-2 py-0.5 rounded bg-card/90 border border-neon-green/30">완료</span>
+              <div className="absolute inset-0 flex items-center justify-center rounded-lg bg-card/70">
+                <span className="text-neon-green text-[10px] font-bold px-2 py-0.5 rounded bg-card border border-neon-green/30">완료</span>
               </div>
             )}
           </div>
         ))}
       </div>
-      {/* Progress bar */}
       <div className="mt-4">
         <div className="flex justify-between text-[10px] text-muted-foreground mb-1.5">
           <span>달성률</span>
@@ -63,7 +60,7 @@ const MissionBoard = () => {
             className="h-full rounded-full animate-shimmer"
             style={{
               width: `${(completedCount / missions.length) * 100}%`,
-              background: "linear-gradient(90deg, hsl(150 90% 45%), hsl(190 100% 50%), hsl(150 90% 45%))",
+              background: "linear-gradient(90deg, hsl(150 90% 35%), hsl(190 100% 40%), hsl(150 90% 35%))",
               backgroundSize: "200% 100%",
             }}
           />
